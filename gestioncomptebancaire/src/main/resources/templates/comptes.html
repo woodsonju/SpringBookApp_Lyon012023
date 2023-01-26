@@ -10,21 +10,78 @@
 
 <body>
 	<!--Pour tester -->
-	<h1>Test</h1>
+	<!--<h1>Test</h1>-->
 	<div class="container">
+
 		<div class="row">
+
 			<div class="col-md-6">
-				<div class="card">
-					<div class="card-header">
+				<div class="card  mt-3">
+					<div class="card-header text-white" id="card-header-color">
+						Consultation d'un compte
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Special title treatment</h5>
-						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
+						<form th:action="@{/bank/consultercompte}" method="get">
+							<div>
+								<label>Numero compte: </label>
+								<input type="text" name="numCompte" />
+								<button type="submit" class="btn" id="buttonOK">OK</button>
+							</div>
+						</form>
+
+						<div class="text-danger" th:if="${compteIntrouvableException}"
+							th:text="${compteIntrouvableException}">
+
+						</div>
+					</div>
+				</div>
+
+				<div class="card mt-3" th:if="${compte}">  <!--On affiche les div que si on a un compte, et qu'il existe-->
+					<div class="card-header text-white" id="card-header-color">
+						Information sur le compte
+					</div>
+					<div class="card-body">
+						<div>
+							<label>Client:</label>
+							<label th:text="${compte.client.nom}"></label>
+						</div>
+						<div>
+							<label>Numéro du compte: </label>
+							<label th:text="${compte.numCompte}"></label>
+						</div>
+						<div>
+							<label>Date de création: </label>
+							<label th:text="${compte.dateCreation}"></label>
+						</div>
+						<div>
+							<!--
+								Object.class retourne la classe 
+								Object.class.simpleName affiche le nom de classe 
+								CompteCourant ou CompteEpargne
+							-->
+							<label>Type de compte: </label>
+							<label th:text="${compte.class.simpleName}"></label>
+						</div>
+						<div>
+							<!--Si le compte est un CompteCourant on affiche Decouvert 
+								Sinon si le compte est un CompteEpargne on affiche Taux-->
+							<div th:if = "${compte.class.simpleName == 'CompteCourant'}">
+								<label>Découvert: </label> <label th:text="${compte.decouvert}"></label>
+							</div>
+							<div th:if = "${compte.class.simpleName == 'CompteEpargne'}">
+								<label>Taux: </label> <label th:text="${compte.taux}"></label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+
+
+
+	</div>
 	</div>
 </body>
 
