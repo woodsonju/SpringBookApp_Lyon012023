@@ -18,27 +18,27 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_CPTE", discriminatorType = DiscriminatorType.STRING, length = 2)
 public abstract class Compte implements Serializable{
-	
+
 	private static final long serialVersionUID = -5534190747827835313L;
 
 	@Id
 	private String numCompte;
-	
+
 	private LocalDate dateCreation;
 	private double solde;
-	
+
 	//ManyToOne ==> Many: Compte  Client: One
 	@ManyToOne
 	@JoinColumn(name="CODE_CLI")
 	private Client client;
-	
+
 	@OneToMany(mappedBy = "compte")
 	private Collection<Operation> operations;
-	
+
 	public Compte() {
 	}
-	
-	
+
+
 	public Compte(String numCompte, LocalDate dateCreation, double solde, Client client) {
 		super();
 		this.numCompte = numCompte;
@@ -89,7 +89,7 @@ public abstract class Compte implements Serializable{
 	public void setOperations(Collection<Operation> operations) {
 		this.operations = operations;
 	}
-	
-	
-	
+
+
+
 }

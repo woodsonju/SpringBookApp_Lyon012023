@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 public class CompteEpargne extends Compte {
 
 	private static final long serialVersionUID = -4878147168306604800L;
-	
 	private double taux; 
 	
 	public CompteEpargne() {

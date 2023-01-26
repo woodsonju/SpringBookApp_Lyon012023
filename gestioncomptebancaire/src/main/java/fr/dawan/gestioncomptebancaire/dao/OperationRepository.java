@@ -13,7 +13,7 @@ public interface OperationRepository extends JpaRepository<Operation, Long>{
 	/*
 	 * On specifie que numCpte correspond au paramètre x avec l'annotation @Param("x")
 	 */
-	@Query("SELECT op FROM Operation op WHERE op.compte.numCompte=:x order op.numOperation desc")
+	@Query("SELECT op FROM Operation op WHERE op.compte.numCompte=:x order by op.numOperation desc")
 	Page<Operation> listOperation(@Param("x") String numCpte, Pageable pageable);
 	
 }

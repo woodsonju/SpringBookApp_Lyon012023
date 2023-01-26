@@ -10,9 +10,9 @@ import javax.persistence.Entity;
 public class CompteCourant extends Compte {
 
 	private static final long serialVersionUID = -7701895841962415675L;
-	
+
 	private double decouvert;
-	
+
 	public CompteCourant() {
 		// TODO Auto-generated constructor stub
 	}
@@ -29,7 +29,5 @@ public class CompteCourant extends Compte {
 	public void setDecouvert(double decouvert) {
 		this.decouvert = decouvert;
 	}
-
-
 
 }
