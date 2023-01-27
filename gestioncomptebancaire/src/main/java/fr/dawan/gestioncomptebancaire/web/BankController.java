@@ -28,6 +28,9 @@ public class BankController {
 
 	@GetMapping("/consultercompte")
 	public String consulterCompte(Model model, String numCompte) {
+		
+		model.addAttribute("numCompte", numCompte);
+		
 		Compte cb;
 		try {
 			cb = bankService.consulterCompte(numCompte);
@@ -42,6 +45,7 @@ public class BankController {
 		return "comptes";
 	}
 
+	
 
 	@PostMapping("/saveOperation")
 	public String saveOperation(Model model, String typeOperation, String numCompte, double montant, 
@@ -56,17 +60,17 @@ public class BankController {
 				bankService.virement(numCompte, numCompte2, montant);
 			}
 		} catch (CompteIntrouvableException e) {
-			
+			model.addAttribute("compteIntrouvableException", e.getCompteIntrouvable());
 			e.printStackTrace();
 		} catch (SoldeInsuffisantException e) {
-	
+			model.addAttribute("soldeInsuffisantException", e.getSoldeInsuffisant());
 			e.printStackTrace();
 		} catch (VirementMemeCompteException e) {
-		
+			model.addAttribute("virementMemeCompteException", e.getVirementMemeCompteImposssible());
 			e.printStackTrace();
 		}
 		
-		return null;
+		return "comptes";
 
 	}
 
