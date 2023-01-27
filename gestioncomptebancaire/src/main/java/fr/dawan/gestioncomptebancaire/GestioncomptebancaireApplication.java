@@ -46,18 +46,18 @@ public class GestioncomptebancaireApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Client c1 = clientRepository.save(new Client("Mathéo", "matheo@gmail.com"));
-		Client c2 = clientRepository.save(new Client("Louis", "louis@gmail.com"));
-
-		Compte cb1 = compteRepository.save(new CompteCourant("c1", LocalDate.now(), 300000, c1, 2000));
-		Compte cb2 = compteRepository.save(new CompteEpargne("c2", LocalDate.now(), 7000, c2, 5.5));
-
-		operationRepository.save(new Versement(LocalDate.now(), 72000, cb1));
-		operationRepository.save(new Versement(LocalDate.now(), 28000, cb1));
-		operationRepository.save(new Retrait(LocalDate.now(), 30000, cb1));
-		
-		operationRepository.save(new Versement(LocalDate.now(), 1500, cb2));
-		operationRepository.save(new Retrait(LocalDate.now(), 1000, cb2));
+//		Client c1 = clientRepository.save(new Client("Mathéo", "matheo@gmail.com"));
+//		Client c2 = clientRepository.save(new Client("Louis", "louis@gmail.com"));
+//
+//		Compte cb1 = compteRepository.save(new CompteCourant("c1", LocalDate.now(), 300000, c1, 2000));
+//		Compte cb2 = compteRepository.save(new CompteEpargne("c2", LocalDate.now(), 7000, c2, 5.5));
+//
+//		operationRepository.save(new Versement(LocalDate.now(), 72000, cb1));
+//		operationRepository.save(new Versement(LocalDate.now(), 28000, cb1));
+//		operationRepository.save(new Retrait(LocalDate.now(), 30000, cb1));
+//		
+//		operationRepository.save(new Versement(LocalDate.now(), 1500, cb2));
+//		operationRepository.save(new Retrait(LocalDate.now(), 1000, cb2));
 
 		
 	}
